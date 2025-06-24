@@ -4,7 +4,9 @@ import styles from "./App.module.scss";
 function App() {
   return (
     <div className={styles.app}>
-      <Converter />
+      <div className={styles.container}>
+        <Converter />
+      </div>
     </div>
   );
 }

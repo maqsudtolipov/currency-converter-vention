@@ -1,3 +1,7 @@
 .app {
-  @apply bg-lime-800;
+  @apply w-full h-screen py-40 bg-gray-400;
+}
+
+.container {
+  @apply w-[1200px] m-auto;
 }
