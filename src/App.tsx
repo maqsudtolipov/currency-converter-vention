@@ -1,7 +1,11 @@
-import styles from "./index.module.scss";
+import Converter from "./feature/Converter.tsx";
 
 function App() {
-  return <div className={styles.test}>test</div>;
+  return (
+    <div>
+      <Converter />
+    </div>
+  );
 }
 
 export default App;
