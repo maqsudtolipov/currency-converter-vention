@@ -1,4 +1,4 @@
-import Input from "../ui/Input.tsx";
+import Input from "../ui/input/Input.tsx";
 import styles from "./Converter.module.scss";
 import FromDropdown from "../ui/dropdown/instances/FromDropdown.tsx";
 import ToDropdown from "../ui/dropdown/instances/ToDropdown.tsx";

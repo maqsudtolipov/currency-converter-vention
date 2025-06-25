@@ -1,7 +1,7 @@
 .customTrigger {
   @apply py-2 px-4;
   @apply flex items-center justify-between gap-4;
-  @apply border rounded-lg;
+  @apply border rounded-lg cursor-pointer;
 
   &:hover {
     @apply bg-gray-50;
