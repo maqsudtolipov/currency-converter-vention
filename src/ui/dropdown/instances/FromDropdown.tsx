@@ -2,11 +2,13 @@ import Dropdown from "../Dropdown.tsx";
 import DropdownItem from "../DropdownItem.tsx";
 import DropdownList from "../DropdownList.tsx";
 import DropdownTrigger from "../DropdownTrigger.tsx";
+import DropdownSelected from "../DropdownSelected.tsx";
 
 const FromDropdown = () => {
   return (
     <Dropdown>
       <DropdownTrigger>Click me</DropdownTrigger>
+      <DropdownSelected />
       <DropdownList>
         <DropdownItem keyId="USD" flag="🇺🇸" currency="USD US Dollar" />
         <DropdownItem keyId="EUR" flag="🇪🇺" currency="EUR Euro" />
