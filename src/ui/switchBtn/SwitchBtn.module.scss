@@ -1,6 +1,6 @@
 .switch {
   @apply p-4;
-  @apply absolute left-2/3 top-1/2 -translate-y-1/2 -translate-x-1/2;
+  @apply absolute left-2/3 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10;
   @apply bg-white rounded-full border;
 
   svg {
