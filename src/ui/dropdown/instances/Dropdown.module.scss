@@ -14,6 +14,14 @@
   &Text {
     @apply text-2xl font-semibold text-black;
   }
+
+  &From {
+    @apply pl-5 pr-10;
+  }
+
+  &To {
+    @apply pl-10 pr-5;
+  }
 }
 
 .icon {

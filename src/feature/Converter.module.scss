@@ -1,8 +1,9 @@
   .converter {
     @apply p-8;
-    @apply bg-white rounded-3xl overflow-hidden;
+    @apply bg-white rounded-3xl;
   }
 
   .display {
+    @apply relative;
     @apply grid grid-cols-[1fr_1fr_1fr] gap-2;
   }

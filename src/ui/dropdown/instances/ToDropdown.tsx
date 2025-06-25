@@ -10,7 +10,7 @@ const ToDropdown = () => {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <div className={styles.customTrigger}>
+        <div className={`${styles.customTrigger} ${styles.customTriggerTo}`}>
           <div>
             <p className={styles.customTriggerLabel}>From</p>
             <DropdownSelected className={styles.customTriggerText} />

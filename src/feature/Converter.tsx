@@ -2,6 +2,7 @@ import Input from "../ui/input/Input.tsx";
 import styles from "./Converter.module.scss";
 import FromDropdown from "../ui/dropdown/instances/FromDropdown.tsx";
 import ToDropdown from "../ui/dropdown/instances/ToDropdown.tsx";
+import SwitchBtn from "../ui/switchBtn/SwitchBtn.tsx";
 
 const Converter = () => {
   return (
@@ -9,6 +10,7 @@ const Converter = () => {
       <div className={styles.display}>
         <Input />
         <FromDropdown />
+        <SwitchBtn />
         <ToDropdown />
 
         {/*<SwitchBtn />*/}
