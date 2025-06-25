@@ -1,8 +1,8 @@
-import Input from "../ui/input/Input.tsx";
+import Input from "../../ui/input/Input.tsx";
 import styles from "./Converter.module.scss";
-import FromDropdown from "../ui/dropdown/instances/FromDropdown.tsx";
-import ToDropdown from "../ui/dropdown/instances/ToDropdown.tsx";
-import SwitchBtn from "../ui/switchBtn/SwitchBtn.tsx";
+import FromDropdown from "../../ui/dropdown/instances/FromDropdown.tsx";
+import ToDropdown from "../../ui/dropdown/instances/ToDropdown.tsx";
+import SwitchBtn from "../../ui/switchBtn/SwitchBtn.tsx";
 import Display from "./components/Display.tsx";
 
 const Converter = () => {

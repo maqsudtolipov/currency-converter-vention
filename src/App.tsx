@@ -1,4 +1,4 @@
-import Converter from "./feature/Converter.tsx";
+import Converter from "./feature/converter/Converter.tsx";
 import styles from "./App.module.scss";
 
 function App() {
