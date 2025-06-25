@@ -1,6 +1,7 @@
 import { type ReactNode, useContext } from "react";
 import styles from "./DropdownList.module.scss";
 import { DropdownContext } from "./Dropdown.tsx";
+import useOutsideClick from "../../hooks/useOutsideClick.ts";
 
 const DropdownList = ({ children }: { children: ReactNode }) => {
   const context = useContext(DropdownContext);
@@ -8,10 +9,16 @@ const DropdownList = ({ children }: { children: ReactNode }) => {
     throw new Error("DropdownList must be used within the Dropdown");
   }
 
-  const { isOpen } = context;
+  const { isOpen, closeDropdown } = context;
+  const ref = useOutsideClick<HTMLUListElement>(closeDropdown);
+
   const style = `${styles.list} ${isOpen ? "" : styles.listHidden}`;
 
-  return <ul className={style}>{children}</ul>;
+  return (
+    <ul ref={ref} className={style}>
+      {children}
+    </ul>
+  );
 };
 
 export default DropdownList;

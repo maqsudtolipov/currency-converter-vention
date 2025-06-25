@@ -8,7 +8,13 @@ const DropdownTrigger = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <div className="relative" onClick={() => context.toggleDropdown()}>
+    <div
+      className="relative"
+      onClick={(event) => {
+        event.stopPropagation();
+        context.toggleDropdown();
+      }}
+    >
       {children}
     </div>
   );
