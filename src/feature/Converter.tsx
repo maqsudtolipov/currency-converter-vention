@@ -1,16 +1,17 @@
 import Input from "../ui/Input.tsx";
-import SwitchBtn from "../ui/SwitchBtn.tsx";
 import styles from "./Converter.module.scss";
 import FromDropdown from "../ui/dropdown/instances/FromDropdown.tsx";
+import ToDropdown from "../ui/dropdown/instances/ToDropdown.tsx";
 
 const Converter = () => {
   return (
     <div className={styles.converter}>
-      <div>
+      <div className={styles.display}>
         <Input />
         <FromDropdown />
+        <ToDropdown />
 
-        <SwitchBtn />
+        {/*<SwitchBtn />*/}
         {/*<Dropdown />*/}
       </div>
       <div>Display</div>
