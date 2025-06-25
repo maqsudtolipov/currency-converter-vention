@@ -1,13 +1,21 @@
 import styles from "./Display.module.scss";
+import { ConverterContext } from "../ConverterContext.tsx";
+import { useContext } from "react";
 
 const Display = () => {
+  const context = useContext(ConverterContext);
+  if (!context) return null;
+
+  const { input } = context;
+  const rate = 1250;
+
   return (
     <div>
-      <p className={styles.fromCurrency}>4000 Us Dollars =</p>
-      <p className={styles.toCurrency}>49,878,847.08 Uzbekistani Sums</p>
+      <p className={styles.fromCurrency}>{input} Us Dollars =</p>
+      <p className={styles.toCurrency}>{input * rate} Uzbekistani Sums</p>
       <div className={styles.prices}>
-        <p>1 USD = 12,469.7 UZS</p>
-        <p>1 UZS = 0.0000801943 USD</p>
+        <p>1 USD = {input * rate} UZS</p>
+        <p>1 UZS = {rate / input} USD</p>
       </div>
     </div>
   );
