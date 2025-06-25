@@ -9,7 +9,7 @@ import { RiArrowDownSLine } from "react-icons/ri";
 const FromDropdown = () => {
   return (
     <Dropdown>
-      <DropdownTrigger>
+      <DropdownTrigger className={styles.container}>
         <div className={`${styles.customTrigger} ${styles.customTriggerFrom}`}>
           <div>
             <p className={styles.customTriggerLabel}>From</p>

@@ -17,7 +17,13 @@ interface Dropdown {
 
 export const DropdownContext = createContext<Dropdown | null>(null);
 
-const Dropdown = ({ children }: { children: ReactNode }) => {
+const Dropdown = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: ReactNode;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedItem, setHighlightedItem] = useState<
     HighlightedItem | undefined
@@ -45,7 +51,7 @@ const Dropdown = ({ children }: { children: ReactNode }) => {
         highlightItem,
       }}
     >
-      <div>{children}</div>
+      <div className={className}>{children}</div>
     </DropdownContext.Provider>
   );
 };

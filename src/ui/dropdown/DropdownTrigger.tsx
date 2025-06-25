@@ -1,7 +1,13 @@
 import { type ReactNode, useContext } from "react";
 import { DropdownContext } from "./Dropdown.tsx";
 
-const DropdownTrigger = ({ children }: { children: ReactNode }) => {
+const DropdownTrigger = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: ReactNode;
+}) => {
   const context = useContext(DropdownContext);
   if (!context) {
     throw new Error("DropdownTrigger must be used within the Dropdown");
@@ -9,7 +15,7 @@ const DropdownTrigger = ({ children }: { children: ReactNode }) => {
 
   return (
     <div
-      className="relative"
+      className={`relative ${className}`}
       onClick={(event) => {
         event.stopPropagation();
         context.toggleDropdown();
