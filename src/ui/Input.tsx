@@ -6,7 +6,7 @@ const Input = () => {
   return (
     <div className={styles.inputContainer}>
       <label htmlFor="amount" className={styles.labelText}>
-        Amount:
+        Amount
       </label>
 
       <div className={styles.inputField}>
