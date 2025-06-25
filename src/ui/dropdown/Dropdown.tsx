@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useState } from "react";
+import styles from "./Dropdown.module.scss";
 
 interface HighlightedItem {
   code: string;
@@ -51,7 +52,7 @@ const Dropdown = ({
         highlightItem,
       }}
     >
-      <div className={className}>{children}</div>
+      <div className={`${className} ${styles.dropdown}`}>{children}</div>
     </DropdownContext.Provider>
   );
 };
