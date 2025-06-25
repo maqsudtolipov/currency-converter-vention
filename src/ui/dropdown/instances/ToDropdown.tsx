@@ -4,14 +4,20 @@ import DropdownList from "../DropdownList.tsx";
 import DropdownTrigger from "../DropdownTrigger.tsx";
 import DropdownSelected from "../DropdownSelected.tsx";
 import styles from "./Dropdown.module.scss";
+import { RiArrowDownSLine } from "react-icons/ri";
 
 const ToDropdown = () => {
   return (
     <Dropdown>
       <DropdownTrigger>
         <div className={styles.customTrigger}>
-          <p className={styles.customTriggerLabel}>From</p>
-          <DropdownSelected className={styles.customTriggerText} />
+          <div>
+            <p className={styles.customTriggerLabel}>From</p>
+            <DropdownSelected className={styles.customTriggerText} />
+          </div>
+          <div>
+            <RiArrowDownSLine className={styles.icon} />
+          </div>
         </div>
       </DropdownTrigger>
 
