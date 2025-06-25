@@ -3,7 +3,7 @@ import { useContext } from "react";
 import styles from "./DropdownItem.module.scss";
 
 interface DropdownItemProps {
-  keyId: string | number;
+  keyId: string;
   flag: string;
   currency: string;
 }
@@ -16,11 +16,11 @@ const DropdownItem = ({ keyId, flag, currency }: DropdownItemProps) => {
   const { highlightedItem, highlightItem, closeDropdown } = context;
 
   const handleHighlight = () => {
-    highlightItem(keyId);
+    highlightItem(keyId, flag, currency);
     closeDropdown();
   };
 
-  const style = `${styles.item} ${highlightedItem === keyId ? styles.itemHighlighted : ""}`;
+  const style = `${styles.item} ${highlightedItem?.code === keyId ? styles.itemHighlighted : ""}`;
 
   return (
     <li className={style} onClick={handleHighlight}>

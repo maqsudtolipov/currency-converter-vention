@@ -9,7 +9,11 @@ const DropdownSelected = () => {
 
   const { highlightedItem } = context;
 
-  return <div>{highlightedItem}</div>;
+  return highlightedItem ? (
+    <div>
+      {highlightedItem.flag} {highlightedItem.name}
+    </div>
+  ) : null;
 };
 
 export default DropdownSelected;

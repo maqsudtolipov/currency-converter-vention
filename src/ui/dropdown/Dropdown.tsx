@@ -1,12 +1,18 @@
 import { createContext, type ReactNode, useState } from "react";
 
+interface HighlightedItem {
+  code: string;
+  flag: string;
+  name: string;
+}
+
 interface Dropdown {
   isOpen: boolean;
-  highlightedItem: string | number | undefined;
+  highlightedItem: HighlightedItem | undefined;
   toggleDropdown: () => void;
   openDropdown: () => void;
   closeDropdown: () => void;
-  highlightItem: (key: string | number) => void;
+  highlightItem: (code: string, flag: string, name: string) => void;
 }
 
 export const DropdownContext = createContext<Dropdown | null>(null);
@@ -14,7 +20,7 @@ export const DropdownContext = createContext<Dropdown | null>(null);
 const Dropdown = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedItem, setHighlightedItem] = useState<
-    number | string | undefined
+    HighlightedItem | undefined
   >(undefined);
 
   const toggleDropdown = () => {
@@ -23,8 +29,9 @@ const Dropdown = ({ children }: { children: ReactNode }) => {
   const openDropdown = () => setIsOpen(true);
   const closeDropdown = () => setIsOpen(false);
 
-  const highlightItem = (key: string | number) => {
-    setHighlightedItem(key);
+  const highlightItem = (code: string, flag: string, name: string) => {
+    setHighlightedItem({ code, flag, name });
+    console.log(highlightedItem);
   };
 
   return (
