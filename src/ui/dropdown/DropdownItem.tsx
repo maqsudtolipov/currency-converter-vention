@@ -1,5 +1,6 @@
 import { DropdownContext } from "./Dropdown.tsx";
 import { useContext } from "react";
+import styles from "./DropdownItem.module.scss";
 
 interface DropdownItemProps {
   flag: string;
@@ -13,7 +14,7 @@ const DropdownItem = ({ flag, currency }: DropdownItemProps) => {
   }
 
   return (
-    <li>
+    <li className={styles.item}>
       {flag} - {currency}
     </li>
   );

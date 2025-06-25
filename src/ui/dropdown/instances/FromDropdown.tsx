@@ -8,11 +8,11 @@ const FromDropdown = () => {
     <Dropdown>
       <DropdownTrigger>Click me</DropdownTrigger>
       <DropdownList>
-        <DropdownItem flag="🇺🇸" currency="USD" />
-        <DropdownItem flag="🇪🇺" currency="EUR" />
-        <DropdownItem flag="🇺🇿" currency="UZS" />
-        <DropdownItem flag="🟠" currency="BTC" />
-        <DropdownItem flag="🟢" currency="USDT" />
+        <DropdownItem flag="🇺🇸" currency="USD US Dollar" />
+        <DropdownItem flag="🇪🇺" currency="EUR Euro" />
+        <DropdownItem flag="🇺🇿" currency="UZS Uzbekistan Som" />
+        <DropdownItem flag="🟠" currency="BTC Bitcoin" />
+        <DropdownItem flag="🟢" currency="USDT US Tather" />
       </DropdownList>
     </Dropdown>
   );

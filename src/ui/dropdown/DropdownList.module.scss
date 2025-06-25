@@ -1,8 +1,9 @@
 .list {
+  @apply mt-2;
   @apply absolute translate-y-1;
-  @apply bg-white border border-green-700 rounded-lg shadow-2xl shadow-gray-200;
+  @apply bg-white border rounded-lg shadow-2xl shadow-black/30  overflow-hidden;
 
   &Hidden {
-    @apply hidden
+    @apply hidden;
   }
 }
