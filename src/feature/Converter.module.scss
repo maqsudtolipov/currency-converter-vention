@@ -2,3 +2,7 @@
     @apply p-8;
     @apply bg-white rounded-3xl overflow-hidden;
   }
+
+  .display {
+    @apply grid grid-cols-[1fr_1fr_1fr] gap-2;
+  }
