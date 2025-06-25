@@ -6,4 +6,8 @@
   svg {
     @apply text-base;
   }
+
+  &:hover {
+    @apply bg-gray-50;
+  }
 }
