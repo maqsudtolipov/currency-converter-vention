@@ -1,0 +1,12 @@
+.fromCurrency {
+  @apply text-base font-semibold text-gray-600;
+}
+
+.toCurrency {
+  @apply py-2.5;
+  @apply text-3xl font-semibold text-gray-800;
+}
+
+.prices {
+  @apply text-sm text-gray-600;
+}
