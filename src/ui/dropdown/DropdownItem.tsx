@@ -3,7 +3,7 @@ import { useContext } from "react";
 import styles from "./DropdownItem.module.scss";
 
 interface DropdownItemProps {
-  key: string | number;
+  keyId: string | number;
   flag: string;
   currency: string;
 }
@@ -13,9 +13,12 @@ const DropdownItem = ({ keyId, flag, currency }: DropdownItemProps) => {
   if (!context) {
     throw new Error("DropdownList must be used within the Dropdown");
   }
-  const { highlightedItem, highlightItem } = context;
+  const { highlightedItem, highlightItem, closeDropdown } = context;
 
-  const handleHighlight = () => highlightItem(keyId);
+  const handleHighlight = () => {
+    highlightItem(keyId);
+    closeDropdown();
+  };
 
   const style = `${styles.item} ${highlightedItem === keyId ? styles.itemHighlighted : ""}`;
 

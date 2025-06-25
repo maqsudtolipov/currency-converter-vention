@@ -9,7 +9,7 @@ const DropdownList = ({ children }: { children: ReactNode }) => {
   }
 
   const { isOpen } = context;
-  const style = `${styles.list} ${isOpen ? styles.listHidden : ""}`;
+  const style = `${styles.list} ${isOpen ? "" : styles.listHidden}`;
 
   return <ul className={style}>{children}</ul>;
 };
