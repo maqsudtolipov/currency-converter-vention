@@ -1,7 +1,12 @@
 import styles from "./Input.module.scss";
+import { ConverterContext } from "../../feature/converter/ConverterContext.tsx";
+import { useContext } from "react";
 
 const Input = () => {
-  const currency = "$";
+  const context = useContext(ConverterContext);
+  if (!context) return null;
+
+  const { input, setInput } = context;
 
   return (
     <div className={styles.inputContainer}>
@@ -10,8 +15,13 @@ const Input = () => {
       </label>
 
       <div className={styles.inputField}>
-        {currency}
-        <input type="text" id="amount" defaultValue={15} />
+        <input
+          type="number"
+          id="amount"
+          value={input}
+          min={0}
+          onChange={(e) => setInput(Number(e.target.value))}
+        />
       </div>
     </div>
   );

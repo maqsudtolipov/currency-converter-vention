@@ -4,18 +4,21 @@ import FromDropdown from "../../ui/dropdown/instances/FromDropdown.tsx";
 import ToDropdown from "../../ui/dropdown/instances/ToDropdown.tsx";
 import SwitchBtn from "../../ui/switchBtn/SwitchBtn.tsx";
 import Display from "./components/Display.tsx";
+import ConverterContextProvider from "./ConverterContext.tsx";
 
 const Converter = () => {
   return (
-    <div className={styles.converter}>
-      <div className={styles.inputField}>
-        <Input />
-        <FromDropdown />
-        <SwitchBtn />
-        <ToDropdown />
+    <ConverterContextProvider>
+      <div className={styles.converter}>
+        <div className={styles.inputField}>
+          <Input />
+          <FromDropdown />
+          <SwitchBtn />
+          <ToDropdown />
+        </div>
+        <Display />
       </div>
-      <Display />
-    </div>
+    </ConverterContextProvider>
   );
 };
 
