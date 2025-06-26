@@ -21,12 +21,28 @@ const Display = () => {
           input,
           currencyRates[fromCurrency],
           currencyRates[toCurrency],
-        )}{" "}
+        )}
         Uzbekistani Sums
       </p>
       <div className={styles.prices}>
-        <p>1 USD = {input * rate} UZS</p>
-        <p>1 UZS = {rate / input} USD</p>
+        <p>
+          1 {fromCurrency} ={" "}
+          {convertCurrency(
+            1,
+            currencyRates[fromCurrency],
+            currencyRates[toCurrency],
+          )}{" "}
+          {toCurrency}
+        </p>
+        <p>
+          1 {toCurrency} ={" "}
+          {convertCurrency(
+            1,
+            currencyRates[toCurrency],
+            currencyRates[fromCurrency],
+          )}{" "}
+          {fromCurrency}
+        </p>
       </div>
     </div>
   );
