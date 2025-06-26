@@ -13,7 +13,7 @@ interface ConverterContext {
   setCurrencyRates: (input: CurrencyRates) => void;
   setFromCurrency: (fromCurrency: string) => void;
   setToCurrency: (toCurrency: string) => void;
-  updatedDate: number;
+  updatedDate?: number;
   switchCurrency: () => void;
 }
 
