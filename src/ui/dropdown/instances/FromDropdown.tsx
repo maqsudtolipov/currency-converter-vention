@@ -5,9 +5,9 @@ import DropdownTrigger from "../DropdownTrigger.tsx";
 import DropdownSelected from "../DropdownSelected.tsx";
 import styles from "./Dropdown.module.scss";
 import { RiArrowDownSLine } from "react-icons/ri";
+import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
 import { useContext } from "react";
 import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
-import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
 
 const FromDropdown = () => {
   const context = useContext(ConverterContext);
@@ -15,10 +15,13 @@ const FromDropdown = () => {
     throw new Error("DropdownList must be used within the Dropdown");
   }
 
-  const { setFromCurrency } = context;
+  const { setFromCurrency, fromCurrency } = context;
+  const something = dropdownCurrencies.find(
+    (item) => item.code === fromCurrency,
+  );
 
   return (
-    <Dropdown>
+    <Dropdown externalItem={something}>
       <DropdownTrigger className={styles.container}>
         <div className={`${styles.customTrigger} ${styles.customTriggerFrom}`}>
           <div>

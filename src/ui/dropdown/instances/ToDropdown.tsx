@@ -15,10 +15,11 @@ const ToDropdown = () => {
     throw new Error("DropdownList must be used within the Dropdown");
   }
 
-  const { setToCurrency } = context;
+  const { setToCurrency, toCurrency } = context;
+  const something = dropdownCurrencies.find((item) => item.code === toCurrency);
 
   return (
-    <Dropdown>
+    <Dropdown externalItem={something}>
       <DropdownTrigger className={styles.container}>
         <div className={`${styles.customTrigger} ${styles.customTriggerTo}`}>
           <div>
