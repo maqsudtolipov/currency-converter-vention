@@ -3,17 +3,17 @@ const dropdownCurrencies = [
   {
     code: "USD",
     flag: "🇺🇸",
-    name: "USD US Dollar",
+    name: "US Dollar",
   },
   {
     code: "UZS",
     flag: "🇺🇿",
-    name: "UZS Uzbekistan Som",
+    name: "Uzbekistan Sum",
   },
   {
     code: "EUR",
     flag: "🇪🇺",
-    name: "EUR Euro",
+    name: "Euro",
   },
 ];
 

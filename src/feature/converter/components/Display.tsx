@@ -2,6 +2,7 @@ import styles from "./Display.module.scss";
 import { ConverterContext } from "../ConverterContext.tsx";
 import { useContext } from "react";
 import convertCurrency from "../../../helpers/convertCurrency.ts";
+import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
 
 const Display = () => {
   const context = useContext(ConverterContext);
@@ -13,14 +14,17 @@ const Display = () => {
 
   return (
     <div>
-      <p className={styles.fromCurrency}>{input} Us Dollars =</p>
+      <p className={styles.fromCurrency}>
+        {input}{" "}
+        {dropdownCurrencies.find((item) => item.code === fromCurrency)?.name}s =
+      </p>
       <p className={styles.toCurrency}>
         {convertCurrency(
           input,
           currencyRates[fromCurrency],
           currencyRates[toCurrency],
-        )}
-        Uzbekistani Sums
+        )}{" "}
+        {dropdownCurrencies.find((item) => item.code === toCurrency)?.name}s
       </p>
       <div className={styles.prices}>
         <p>
