@@ -6,8 +6,9 @@ const Display = () => {
   const context = useContext(ConverterContext);
   if (!context) return null;
 
-  const { input } = context;
+  const { input, currencyRates } = context;
   const rate = 1250;
+  console.log("currency rates", currencyRates);
 
   return (
     <div>

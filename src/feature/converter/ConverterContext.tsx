@@ -14,6 +14,8 @@ interface ConverterContext {
   currencyRates: CurrencyRates | null;
   setInput: (input: number) => void;
   setCurrencyRates: (input: CurrencyRates) => void;
+  setFromCurrency: (fromCurrency: string) => void;
+  setToCurrency: (toCurrency: string) => void;
 }
 
 export const ConverterContext = createContext<ConverterContext | null>(null);
@@ -35,6 +37,8 @@ const ConverterContextProvider = ({ children }: { children: ReactNode }) => {
         currencyRates,
         setInput,
         setCurrencyRates,
+        setFromCurrency,
+        setToCurrency,
       }}
     >
       {children}

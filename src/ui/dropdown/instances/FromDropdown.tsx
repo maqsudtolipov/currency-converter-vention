@@ -5,7 +5,8 @@ import DropdownTrigger from "../DropdownTrigger.tsx";
 import DropdownSelected from "../DropdownSelected.tsx";
 import styles from "./Dropdown.module.scss";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { useState } from "react";
+import { useContext } from "react";
+import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
 
 const currencies = [
   {
@@ -26,9 +27,12 @@ const currencies = [
 ];
 
 const FromDropdown = () => {
-  const [fromCurrency, setFromCurrency] = useState<string | null>(null);
+  const context = useContext(ConverterContext);
+  if (!context) {
+    throw new Error("DropdownList must be used within the Dropdown");
+  }
 
-  console.log("fromCurrency", fromCurrency);
+  const { setFromCurrency } = context;
 
   return (
     <Dropdown>
@@ -43,7 +47,6 @@ const FromDropdown = () => {
           </div>
         </div>
       </DropdownTrigger>
-
       <DropdownList>
         {currencies.map((item) => (
           <DropdownItem
