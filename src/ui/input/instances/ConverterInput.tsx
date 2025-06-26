@@ -8,7 +8,6 @@ const ConverterInput = () => {
     throw new Error("ConverterInput must be used inside the ConverterContext");
 
   const { input, setInput } = context;
-  console.log("early input", input);
 
   return <Input input={input} setInput={setInput} />;
 };
