@@ -1,17 +1,13 @@
 import { RiArrowLeftRightFill } from "react-icons/ri";
 import styles from "./SwitchBtn.module.scss";
-import { useContext } from "react";
-import { ConverterContext } from "../../feature/converter/ConverterContext.tsx";
 
-const SwitchBtn = () => {
-  const context = useContext(ConverterContext);
-  if (!context)
-    throw new Error("SwitchBtn must be used inside the ConverterContext");
+interface SwitchBtnProps {
+  onSwitch: () => void;
+}
 
-  const { switchCurrency } = context;
-
+const SwitchBtn = ({ onSwitch }: SwitchBtnProps) => {
   return (
-    <div className={styles.switch} onClick={switchCurrency} role="button">
+    <div className={styles.switch} onClick={onSwitch} role="button">
       <RiArrowLeftRightFill />
     </div>
   );
