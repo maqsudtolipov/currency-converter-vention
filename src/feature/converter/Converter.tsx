@@ -1,4 +1,3 @@
-import Input from "../../ui/input/Input.tsx";
 import styles from "./Converter.module.scss";
 import FromDropdown from "../../ui/dropdown/instances/FromDropdown.tsx";
 import ToDropdown from "../../ui/dropdown/instances/ToDropdown.tsx";
@@ -6,6 +5,7 @@ import Display from "./components/Display.tsx";
 import { ConverterContext } from "./ConverterContext.tsx";
 import { useContext, useEffect } from "react";
 import ConverterSwitchBtn from "../../ui/switchBtn/instances/ConverterSwitchBtn.tsx";
+import ConverterInput from "../../ui/input/instances/ConverterInput.tsx";
 
 const Converter = () => {
   const context = useContext(ConverterContext);
@@ -41,7 +41,7 @@ const Converter = () => {
   return (
     <div className={styles.converter}>
       <div className={styles.inputField}>
-        <Input />
+        <ConverterInput />
         <FromDropdown />
         <ConverterSwitchBtn />
         <ToDropdown />

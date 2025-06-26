@@ -1,12 +1,12 @@
 import styles from "./Input.module.scss";
-import { ConverterContext } from "../../feature/converter/ConverterContext.tsx";
-import { useContext } from "react";
 
-const Input = () => {
-  const context = useContext(ConverterContext);
-  if (!context) return null;
+interface InputProps {
+  input: number;
+  setInput: (input: number) => void;
+}
 
-  const { input, setInput } = context;
+const Input = ({ input, setInput }: InputProps) => {
+  console.log(input);
 
   return (
     <div className={styles.inputContainer}>
