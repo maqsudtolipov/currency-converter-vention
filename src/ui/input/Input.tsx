@@ -1,8 +1,8 @@
 import styles from "./Input.module.scss";
 
 interface InputProps {
-  input: number;
-  setInput: (input: number) => void;
+  input: string;
+  setInput: (input: string) => void;
 }
 
 const Input = ({ input, setInput }: InputProps) => {
@@ -14,11 +14,11 @@ const Input = ({ input, setInput }: InputProps) => {
 
       <div className={styles.inputField}>
         <input
-          type="number"
+          type="text"
           id="amount"
           value={input}
           min={0}
-          onChange={(e) => setInput(Number(e.target.value))}
+          onChange={(e) => setInput(e.target.value)}
         />
       </div>
     </div>
