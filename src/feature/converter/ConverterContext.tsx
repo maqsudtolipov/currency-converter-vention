@@ -1,10 +1,7 @@
 import { createContext, type ReactNode, useState } from "react";
 
 interface CurrencyRates {
-  USD: number;
-  EUR: number;
-  UZS: number;
-  updatedDate: number;
+  [currencyCode: string]: number;
 }
 
 interface ConverterContext {
@@ -16,6 +13,7 @@ interface ConverterContext {
   setCurrencyRates: (input: CurrencyRates) => void;
   setFromCurrency: (fromCurrency: string) => void;
   setToCurrency: (toCurrency: string) => void;
+  updatedDate: number;
 }
 
 export const ConverterContext = createContext<ConverterContext | null>(null);
