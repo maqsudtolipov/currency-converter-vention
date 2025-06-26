@@ -6,9 +6,15 @@ interface DropdownItemProps {
   keyId: string;
   flag: string;
   currency: string;
+  onSelect?: (keyId: string) => void;
 }
 
-const DropdownItem = ({ keyId, flag, currency }: DropdownItemProps) => {
+const DropdownItem = ({
+  keyId,
+  flag,
+  currency,
+  onSelect,
+}: DropdownItemProps) => {
   const context = useContext(DropdownContext);
   if (!context) {
     throw new Error("DropdownList must be used within the Dropdown");
@@ -18,6 +24,8 @@ const DropdownItem = ({ keyId, flag, currency }: DropdownItemProps) => {
   const handleHighlight = () => {
     highlightItem(keyId, flag, currency);
     closeDropdown();
+
+    if (onSelect) onSelect(keyId);
   };
 
   const style = `${styles.item} ${highlightedItem?.code === keyId ? styles.itemHighlighted : ""}`;

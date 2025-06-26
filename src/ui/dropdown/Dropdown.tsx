@@ -38,7 +38,6 @@ const Dropdown = ({
 
   const highlightItem = (code: string, flag: string, name: string) => {
     setHighlightedItem({ code, flag, name });
-    console.log(highlightedItem);
   };
 
   return (

@@ -5,8 +5,31 @@ import DropdownTrigger from "../DropdownTrigger.tsx";
 import DropdownSelected from "../DropdownSelected.tsx";
 import styles from "./Dropdown.module.scss";
 import { RiArrowDownSLine } from "react-icons/ri";
+import { useState } from "react";
+
+const currencies = [
+  {
+    code: "USD",
+    flag: "🇺🇸",
+    name: "USD US Dollar",
+  },
+  {
+    code: "UZS",
+    flag: "🇺🇿",
+    name: "UZS Uzbekistan Som",
+  },
+  {
+    code: "EUR",
+    flag: "🇪🇺",
+    name: "EUR Euro",
+  },
+];
 
 const FromDropdown = () => {
+  const [fromCurrency, setFromCurrency] = useState<string | null>(null);
+
+  console.log("fromCurrency", fromCurrency);
+
   return (
     <Dropdown>
       <DropdownTrigger className={styles.container}>
@@ -22,11 +45,15 @@ const FromDropdown = () => {
       </DropdownTrigger>
 
       <DropdownList>
-        <DropdownItem keyId="USD" flag="🇺🇸" currency="USD US Dollar" />
-        <DropdownItem keyId="EUR" flag="🇪🇺" currency="EUR Euro" />
-        <DropdownItem keyId="UZS" flag="🇺🇿" currency="UZS Uzbekistan Som" />
-        <DropdownItem keyId="BTC" flag="🟠" currency="BTC Bitcoin" />
-        <DropdownItem keyId="USDT" flag="🟢" currency="USDT US Tather" />
+        {currencies.map((item) => (
+          <DropdownItem
+            key={item.code}
+            keyId={item.code}
+            flag={item.flag}
+            currency={item.name}
+            onSelect={setFromCurrency}
+          />
+        ))}
       </DropdownList>
     </Dropdown>
   );
