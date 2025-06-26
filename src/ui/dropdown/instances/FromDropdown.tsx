@@ -7,24 +7,7 @@ import styles from "./Dropdown.module.scss";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { useContext } from "react";
 import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
-
-const currencies = [
-  {
-    code: "USD",
-    flag: "🇺🇸",
-    name: "USD US Dollar",
-  },
-  {
-    code: "UZS",
-    flag: "🇺🇿",
-    name: "UZS Uzbekistan Som",
-  },
-  {
-    code: "EUR",
-    flag: "🇪🇺",
-    name: "EUR Euro",
-  },
-];
+import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
 
 const FromDropdown = () => {
   const context = useContext(ConverterContext);
@@ -48,7 +31,7 @@ const FromDropdown = () => {
         </div>
       </DropdownTrigger>
       <DropdownList>
-        {currencies.map((item) => (
+        {dropdownCurrencies.map((item) => (
           <DropdownItem
             key={item.code}
             keyId={item.code}
