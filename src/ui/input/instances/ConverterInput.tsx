@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
 import Input from "../Input.tsx";
+import styles from "./ConvertInput.module.scss";
 
 const ConverterInput = () => {
   const [input, setInput] = useState<string>("");
@@ -35,9 +36,9 @@ const ConverterInput = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <Input input={input} setInput={validate} />
-      <p style={{ color: "#b72f2f" }}>{error}</p>
+      <p className={styles.error}>{error}</p>
     </div>
   );
 };

@@ -1,0 +1,9 @@
+.container {
+  @apply relative;
+}
+
+.error {
+  @apply absolute top-full left-4;
+  @apply inline-block;
+  @apply text-sm text-red-800;
+}
