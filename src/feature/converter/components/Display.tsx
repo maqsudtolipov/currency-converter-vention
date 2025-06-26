@@ -8,8 +8,6 @@ const Display = () => {
   if (!context) return null;
 
   const { input, currencyRates, fromCurrency, toCurrency } = context;
-  const rate = 1250;
-  console.log("currency rates", currencyRates);
 
   if (!currencyRates) return <p>Currency rates not fetched</p>;
 
