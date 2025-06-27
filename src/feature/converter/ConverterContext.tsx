@@ -39,16 +39,6 @@ const ConverterContextProvider = ({ children }: { children: ReactNode }) => {
   );
   const [updatedAt, setUpdatedAt] = useState<string>("");
 
-  // useEffect(() => {
-  //   const storedPrefs = getItem("userPresences");
-  //
-  //   if (storedPrefs) {
-  //     setInput(storedPrefs.input ?? 4000);
-  //     setFromCurrency(storedPrefs.fromCurrency ?? "USD");
-  //     setToCurrency(storedPrefs.toCurrency ?? "UZS");
-  //   }
-  // }, []);
-
   useEffect(() => {
     setItem({
       input,
