@@ -1,4 +1,5 @@
-import { createContext, type ReactNode, useState } from "react";
+import { createContext, type ReactNode, useEffect, useState } from "react";
+import useLocalStorage from "../../hooks/useLocalStorage.ts";
 
 interface CurrencyRates {
   [currencyCode: string]: number;
@@ -28,6 +29,25 @@ const ConverterContextProvider = ({ children }: { children: ReactNode }) => {
     null,
   );
   const [updatedAt, setUpdatedAt] = useState<string>("");
+
+  const { getItem, setItem } = useLocalStorage("userPresences");
+
+  useEffect(() => {
+    const storedPrefs = getItem("userPresences");
+    if (storedPrefs) {
+      setInput(storedPrefs.input ?? 4000);
+      setFromCurrency(storedPrefs.fromCurrency ?? "USD");
+      setToCurrency(storedPrefs.toCurrency ?? "UZS");
+    }
+  }, []);
+
+  useEffect(() => {
+    setItem({
+      input,
+      fromCurrency,
+      toCurrency,
+    });
+  }, [input, fromCurrency, toCurrency, setItem]);
 
   const switchCurrency = () => {
     const tempCurrency = fromCurrency;
