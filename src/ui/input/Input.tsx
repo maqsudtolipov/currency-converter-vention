@@ -7,6 +7,8 @@ interface InputProps {
 }
 
 const Input = ({ input, defaultValue, setInput }: InputProps) => {
+  console.log(defaultValue);
+
   return (
     <div className={styles.inputContainer}>
       <label htmlFor="amount" className={styles.labelText}>
