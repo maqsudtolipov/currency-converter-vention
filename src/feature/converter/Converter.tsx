@@ -1,7 +1,7 @@
 import styles from "./Converter.module.scss";
 import FromDropdown from "../../ui/dropdown/instances/FromDropdown.tsx";
 import ToDropdown from "../../ui/dropdown/instances/ToDropdown.tsx";
-import Display from "./components/Display.tsx";
+import ResultsBoard from "./components/ResultsBoard.tsx";
 import { ConverterContext } from "./ConverterContext.tsx";
 import { useContext, useEffect, useState } from "react";
 import ConverterSwitchBtn from "../../ui/switchBtn/instances/ConverterSwitchBtn.tsx";
@@ -58,7 +58,7 @@ const Converter = () => {
         <ToDropdown />
       </div>
 
-      {dataExists && <Display />}
+      {dataExists && <ResultsBoard />}
 
       {/* Error handling when data does not exist */}
       {!dataExists && isLoading && <p>Loading rates...</p>}

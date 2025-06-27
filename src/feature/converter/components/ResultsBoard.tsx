@@ -5,7 +5,7 @@ import convertCurrency from "../../../helpers/convertCurrency.ts";
 import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
 import localizeCurrency from "../../../helpers/localizeCurrency.ts";
 
-const Display = () => {
+const ResultsBoard = () => {
   const context = useContext(ConverterContext);
   if (!context) return null;
 
@@ -64,4 +64,4 @@ const Display = () => {
   );
 };
 
-export default Display;
+export default ResultsBoard;
