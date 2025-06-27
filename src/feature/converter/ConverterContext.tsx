@@ -13,7 +13,8 @@ interface ConverterContext {
   setCurrencyRates: (input: CurrencyRates) => void;
   setFromCurrency: (fromCurrency: string) => void;
   setToCurrency: (toCurrency: string) => void;
-  updatedDate?: number;
+  setUpdatedAt: (updatedAt: string) => void;
+  updatedAt: string;
   switchCurrency: () => void;
 }
 
@@ -26,6 +27,7 @@ const ConverterContextProvider = ({ children }: { children: ReactNode }) => {
   const [currencyRates, setCurrencyRates] = useState<CurrencyRates | null>(
     null,
   );
+  const [updatedAt, setUpdatedAt] = useState<string>("");
 
   const switchCurrency = () => {
     const tempCurrency = fromCurrency;
@@ -40,11 +42,13 @@ const ConverterContextProvider = ({ children }: { children: ReactNode }) => {
         fromCurrency,
         toCurrency,
         currencyRates,
+        updatedAt,
         setInput,
         setCurrencyRates,
         setFromCurrency,
         setToCurrency,
         switchCurrency,
+        setUpdatedAt,
       }}
     >
       {children}
