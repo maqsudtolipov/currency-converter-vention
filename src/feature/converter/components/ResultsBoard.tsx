@@ -17,48 +17,45 @@ const ResultsBoard = () => {
     (item) => item.code === toCurrency,
   );
 
+  if (!selectedCurrency) return null;
+
+  const mainRate = `${localizeCurrency(
+    convertCurrency(
+      input,
+      currencyRates[fromCurrency],
+      currencyRates[toCurrency],
+    ),
+    selectedCurrency.locale,
+    selectedCurrency.code,
+  )} ${selectedCurrency.name}s`;
+  const fromRate = `1 ${fromCurrency} = ${
+    Math.floor(
+      convertCurrency(
+        1,
+        currencyRates[fromCurrency],
+        currencyRates[toCurrency],
+      ) * 1e10,
+    ) / 1e10
+  } ${toCurrency}`;
+  const toRate = `1 ${toCurrency} = ${
+    Math.floor(
+      convertCurrency(
+        1,
+        currencyRates[toCurrency],
+        currencyRates[fromCurrency],
+      ) * 1e10,
+    ) / 1e10
+  } ${fromCurrency}`;
+
   return (
     <div>
       <p className={styles.fromCurrency}>
-        {input}{" "}
-        {dropdownCurrencies.find((item) => item.code === fromCurrency)?.name}s =
+        {input} {selectedCurrency.name}s =
       </p>
-      <p className={styles.toCurrency}>
-        {selectedCurrency
-          ? `${localizeCurrency(
-              convertCurrency(
-                input,
-                currencyRates[fromCurrency],
-                currencyRates[toCurrency],
-              ),
-              selectedCurrency.locale,
-              selectedCurrency.code,
-            )} ${selectedCurrency.name}s`
-          : null}
-      </p>
+      <p className={styles.toCurrency}>{mainRate}</p>
       <div className={styles.prices}>
-        <p>
-          {`1 ${fromCurrency} = ${
-            Math.floor(
-              convertCurrency(
-                1,
-                currencyRates[fromCurrency],
-                currencyRates[toCurrency],
-              ) * 1e10,
-            ) / 1e10
-          } ${toCurrency}`}
-        </p>
-        <p>
-          {`1 ${toCurrency} = ${
-            Math.floor(
-              convertCurrency(
-                1,
-                currencyRates[toCurrency],
-                currencyRates[fromCurrency],
-              ) * 1e10,
-            ) / 1e10
-          } ${fromCurrency}`}
-        </p>
+        <p>{fromRate}</p>
+        <p>{toRate}</p>
       </div>
     </div>
   );
