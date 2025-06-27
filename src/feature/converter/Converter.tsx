@@ -68,7 +68,11 @@ const Converter = () => {
 
       {/* Error handling if data exists */}
       <p>
-        <span role="button" onClick={fetchData} style={{ color: "#1d4ed8" }}>
+        <span
+          role="button"
+          onClick={fetchData}
+          style={{ color: "#1d4ed8", userSelect: "none" }}
+        >
           Refetch
         </span>
 
