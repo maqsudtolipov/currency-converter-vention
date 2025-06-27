@@ -6,6 +6,7 @@ import { ConverterContext } from "./ConverterContext.tsx";
 import { useContext, useEffect, useState } from "react";
 import ConverterSwitchBtn from "../../ui/switchBtn/instances/ConverterSwitchBtn.tsx";
 import ConverterInput from "../../ui/input/instances/ConverterInput.tsx";
+import formatDate from "../../helpers/formatDate.ts";
 
 const Converter = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +37,7 @@ const Converter = () => {
         USD: 1,
         UZS: data.conversion_rates.UZS as number,
         EUR: data.conversion_rates.EUR as number,
-        updatedDate: data.time_last_update_unix,
+        updatedDate: data.time_last_update_utc,
       };
 
       setCurrencyRates(rates);
@@ -67,7 +68,7 @@ const Converter = () => {
       )}
 
       {/* Error handling if data exists */}
-      <p>
+      <p style={{ fontSize: "14px", color: "#797979" }}>
         <span
           role="button"
           onClick={fetchData}
@@ -78,10 +79,16 @@ const Converter = () => {
 
         {dataExists && (
           <>
-            {isLoading && <span> – Loading rates...</span>}
+            {" – "}
+
+            {isLoading && <span>Loading rates...</span>}
 
             {!isLoading && error && (
               <span style={{ color: "#991b1b" }}> – ⛔️ Error: {error}</span>
+            )}
+
+            {!isLoading && (
+              <span>Last updated {formatDate(currencyRates.updatedDate)}</span>
             )}
           </>
         )}
