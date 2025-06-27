@@ -17,7 +17,7 @@ const Converter = () => {
     throw new Error("Converter must be used within a ConverterProvider");
   }
 
-  const { setCurrencyRates, currencyRates } = context;
+  const { currencyRates, updatedAt, setCurrencyRates, setUpdatedAt } = context;
   const dataExists = !!currencyRates;
 
   useEffect(() => {
@@ -37,10 +37,10 @@ const Converter = () => {
         USD: 1,
         UZS: data.conversion_rates.UZS as number,
         EUR: data.conversion_rates.EUR as number,
-        updatedDate: data.time_last_update_utc,
       };
 
       setCurrencyRates(rates);
+      setUpdatedAt(data.time_last_update_utc);
       setError("");
     } catch (e) {
       setError("Failed to update rates");
@@ -87,9 +87,7 @@ const Converter = () => {
               <span style={{ color: "#991b1b" }}> – ⛔️ Error: {error}</span>
             )}
 
-            {!isLoading && (
-              <span>Last updated {formatDate(currencyRates.updatedDate)}</span>
-            )}
+            {!isLoading && <span>Last updated {formatDate(updatedAt)}</span>}
           </>
         )}
       </p>
