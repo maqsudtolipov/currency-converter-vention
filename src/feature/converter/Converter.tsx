@@ -28,7 +28,7 @@ const Converter = () => {
       setIsLoading(true);
 
       const res = await fetch(
-        "https://v6.exchangerate-api.com/v6/a2b1eb34c3500f20de9a5727/latest/USD",
+        `https://v6.exchangerate-api.com/v6/a2b1eb34c3500f20de9a5727/latest/USD`,
       );
       const data = await res.json();
 
@@ -60,24 +60,24 @@ const Converter = () => {
       {dataExists && <Display />}
 
       {/* Error handling when data does not exist */}
-      {!dataExists && isLoading && <p>Loading...</p>}
+      {!dataExists && isLoading && <p>Loading rates...</p>}
 
-      {!dataExists && error && (
-        <p style={{ color: "red" }}>⛔️ Error: {error}</p>
+      {!dataExists && !isLoading && error && (
+        <p style={{ color: "#991b1b" }}>⛔️ Error: {error}</p>
       )}
 
       {/* Error handling if data exists */}
       <p>
-        <span role="button" onClick={fetchData} style={{ color: "blue" }}>
+        <span role="button" onClick={fetchData} style={{ color: "#1d4ed8" }}>
           Refetch
         </span>
 
         {dataExists && (
           <>
-            {isLoading && <span> – Updating data...</span>}
+            {isLoading && <span> – Loading rates...</span>}
 
             {!isLoading && error && (
-              <span style={{ color: "red" }}> – ⛔️ Error: {error}</span>
+              <span style={{ color: "#991b1b" }}> – ⛔️ Error: {error}</span>
             )}
           </>
         )}
