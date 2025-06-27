@@ -16,35 +16,37 @@ const Converter = () => {
     throw new Error("Converter must be used within a ConverterProvider");
   }
 
-  const { setCurrencyRates } = context;
+  const { setCurrencyRates, currencyRates } = context;
+  const dataExists = !!currencyRates;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-
-        const res = await fetch(
-          "https://v6.exchangerate-api.com/v6/a2b1eb34c3500f20de9a572/latest/USD",
-        );
-        const data = await res.json();
-        const rates = {
-          USD: 1,
-          UZS: data.conversion_rates.UZS as number,
-          EUR: data.conversion_rates.EUR as number,
-          updatedDate: data.time_last_update_unix,
-        };
-
-        setCurrencyRates(rates);
-        setError("");
-      } catch (e) {
-        setError("Failed to update rates");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchData();
-  }, [setCurrencyRates]);
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+
+      const res = await fetch(
+        "https://v6.exchangerate-api.com/v6/a2b1eb34c3500f20de9a5725/latest/USD",
+      );
+      const data = await res.json();
+
+      const rates = {
+        USD: 1,
+        UZS: data.conversion_rates.UZS as number,
+        EUR: data.conversion_rates.EUR as number,
+        updatedDate: data.time_last_update_unix,
+      };
+
+      setCurrencyRates(rates);
+      setError("");
+    } catch (e) {
+      setError("Failed to update rates");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={styles.converter}>
@@ -54,9 +56,15 @@ const Converter = () => {
         <ConverterSwitchBtn />
         <ToDropdown />
       </div>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      <Display />
+
+      {dataExists && <Display />}
+
+      {/* Error handling when data does not exist */}
+      {!dataExists && isLoading && <p>Loading...</p>}
+
+      {!dataExists && error && (
+        <p style={{ color: "red" }}>⛔️ Error: Failed to fetch</p>
+      )}
     </div>
   );
 };
