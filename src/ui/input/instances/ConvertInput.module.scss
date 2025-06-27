@@ -7,3 +7,9 @@
   @apply inline-block;
   @apply text-sm text-red-800;
 }
+
+@media screen and (max-width: 810px) {
+  .error {
+    @apply relative top-0 left-0;
+  }
+}

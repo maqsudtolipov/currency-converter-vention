@@ -11,3 +11,9 @@
     @apply bg-gray-50;
   }
 }
+
+@media screen and (max-width: 810px) {
+  .switch {
+    @apply top-2/3 left-1/2;
+  }
+}

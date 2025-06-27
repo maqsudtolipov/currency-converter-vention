@@ -20,7 +20,7 @@
   @apply text-2xl font-semibold text-black;
 
   input {
-    @apply bg-transparent;
+    @apply bg-transparent w-full;
   }
 
   input:focus {
