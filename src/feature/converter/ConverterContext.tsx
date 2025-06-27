@@ -24,7 +24,7 @@ export const ConverterContext = createContext<ConverterContext | null>(null);
 const ConverterContextProvider = ({ children }: { children: ReactNode }) => {
   // Locale storage
   const { getItem, setItem } = useLocalStorage("userPresences");
-  const storedPrefs = getItem("userPresences");
+  const storedPrefs = getItem("userPresences") ?? {};
 
   // States
   const [input, setInput] = useState<number>(storedPrefs.input ?? 4000);
