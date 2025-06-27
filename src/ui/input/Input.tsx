@@ -2,10 +2,11 @@ import styles from "./Input.module.scss";
 
 interface InputProps {
   input: string;
+  defaultValue: number;
   setInput: (input: string) => void;
 }
 
-const Input = ({ input, setInput }: InputProps) => {
+const Input = ({ input, defaultValue, setInput }: InputProps) => {
   return (
     <div className={styles.inputContainer}>
       <label htmlFor="amount" className={styles.labelText}>
@@ -17,6 +18,7 @@ const Input = ({ input, setInput }: InputProps) => {
           type="text"
           id="amount"
           value={input}
+          defaultValue={defaultValue}
           min={0}
           onChange={(e) => setInput(e.target.value)}
         />

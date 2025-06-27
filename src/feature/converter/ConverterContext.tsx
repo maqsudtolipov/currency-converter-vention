@@ -34,6 +34,7 @@ const ConverterContextProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const storedPrefs = getItem("userPresences");
+
     if (storedPrefs) {
       setInput(storedPrefs.input ?? 4000);
       setFromCurrency(storedPrefs.fromCurrency ?? "USD");

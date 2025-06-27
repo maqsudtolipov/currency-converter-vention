@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
 import Input from "../Input.tsx";
 import styles from "./ConvertInput.module.scss";
@@ -11,7 +11,11 @@ const ConverterInput = () => {
   if (!context)
     throw new Error("ConverterInput must be used inside the ConverterContext");
 
-  const { setInput: setContextInput } = context;
+  const { setInput: setContextInput, input: contextInput } = context;
+
+  useEffect(() => {
+    setInput(contextInput.toString());
+  }, [contextInput]);
 
   const validate = (value: string) => {
     setInput(value);
@@ -37,7 +41,7 @@ const ConverterInput = () => {
 
   return (
     <div className={styles.container}>
-      <Input input={input} setInput={validate} />
+      <Input input={input} setInput={validate} defaultValue={contextInput} />
       <p className={styles.error}>{error}</p>
     </div>
   );
