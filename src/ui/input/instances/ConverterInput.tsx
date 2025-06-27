@@ -37,7 +37,7 @@ const ConverterInput = () => {
 
   return (
     <div className={styles.container}>
-      <Input input={input} setInput={validate} defaultValue={contextInput} />
+      <Input input={input} setInput={validate} />
       <p className={styles.error}>{error}</p>
     </div>
   );
