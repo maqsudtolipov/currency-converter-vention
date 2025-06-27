@@ -11,7 +11,7 @@ const Display = () => {
 
   const { input, currencyRates, fromCurrency, toCurrency } = context;
 
-  if (!currencyRates) return <p>Currency rates not fetched</p>;
+  if (!currencyRates) return null;
 
   const selectedCurrency = dropdownCurrencies.find(
     (item) => item.code === toCurrency,
