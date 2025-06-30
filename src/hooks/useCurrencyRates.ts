@@ -1,14 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { ConverterContext } from "../feature/converter/ConverterContext.tsx";
+import { useEffect, useState } from "react";
+import { useConverterContext } from "../feature/converter/hooks/useConverterContext.ts";
 
 const useCurrencyRates = () => {
+  const context = useConverterContext();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
-
-  const context = useContext(ConverterContext);
-  if (!context) {
-    throw new Error("Converter must be used within a ConverterProvider");
-  }
 
   const { currencyRates, updatedAt, setCurrencyRates, setUpdatedAt } = context;
   const dataExists = !!currencyRates;

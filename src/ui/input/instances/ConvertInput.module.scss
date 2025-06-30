@@ -11,5 +11,6 @@
 @media screen and (max-width: 810px) {
   .errorMessage {
     @apply relative top-0 left-0;
+    @apply pl-2;
   }
 }
