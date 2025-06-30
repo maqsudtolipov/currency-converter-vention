@@ -5,3 +5,9 @@
 .container {
   @apply max-w-[1200px] m-auto px-8;
 }
+
+@media screen and (max-width: 810px) {
+  .app {
+    @apply py-20;
+  }
+}

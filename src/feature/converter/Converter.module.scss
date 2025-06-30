@@ -10,6 +10,10 @@
 }
 
 @media screen and (max-width: 810px) {
+  .converter {
+    @apply p-6;
+  }
+
   .inputField {
     @apply grid-cols-1;
   }
