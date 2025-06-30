@@ -32,7 +32,7 @@ const ConverterInput = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.converterInput}>
       <Input input={input} setInput={handleInputChange} />
       {error && <p className={styles.error}>{error}</p>}
     </div>
