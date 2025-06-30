@@ -19,11 +19,11 @@ interface Dropdown {
 export const DropdownContext = createContext<Dropdown | null>(null);
 
 const Dropdown = ({
-  externalItem,
+  selectedItem,
   className,
   children,
 }: {
-  externalItem?: HighlightedItem | undefined;
+  selectedItem?: HighlightedItem | undefined;
   className?: string;
   children: ReactNode;
 }) => {
@@ -33,8 +33,8 @@ const Dropdown = ({
   >(undefined);
 
   useEffect(() => {
-    setHighlightedItem(externalItem);
-  }, [externalItem]);
+    setHighlightedItem(selectedItem);
+  }, [selectedItem]);
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);

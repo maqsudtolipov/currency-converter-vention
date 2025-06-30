@@ -12,10 +12,12 @@ const DropdownTo = () => {
   const context = useConverterContext();
 
   const { setToCurrency, toCurrency } = context;
-  const something = dropdownCurrencies.find((item) => item.code === toCurrency);
+  const selectedCode = dropdownCurrencies.find(
+    (item) => item.code === toCurrency,
+  );
 
   return (
-    <Dropdown externalItem={something}>
+    <Dropdown selectedItem={selectedCode}>
       <DropdownTrigger className={styles.container}>
         <div className={`${styles.customTrigger} ${styles.customTriggerTo}`}>
           <div>
