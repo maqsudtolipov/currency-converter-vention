@@ -21,9 +21,7 @@ const ToDropdown = () => {
   return (
     <Dropdown externalItem={something}>
       <DropdownTrigger className={styles.container}>
-        <div
-          className={`${styles.dropdownTo} ${styles.customTrigger} ${styles.customTriggerTo}`}
-        >
+        <div className={`${styles.customTrigger} ${styles.customTriggerTo}`}>
           <div>
             <p className={styles.customTriggerLabel}>To</p>
             <DropdownSelected className={styles.customTriggerText} />

@@ -32,22 +32,18 @@
   }
 }
 
-.dropdownFrom {
-}
-
-.dropdownTo {
-}
-
 .icon {
   @apply text-2xl text-gray-600;
 }
 
 @media screen and (max-width: 810px) {
-  .dropdownFrom {
-    @apply pr-5;
-  }
+  .customTrigger {
+    &From {
+      @apply pr-5;
+    }
 
-  .dropdownTo {
-    @apply pl-5;
+    &To {
+      @apply pl-5;
+    }
   }
 }

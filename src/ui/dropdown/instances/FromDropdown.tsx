@@ -23,9 +23,7 @@ const FromDropdown = () => {
   return (
     <Dropdown externalItem={something}>
       <DropdownTrigger className={styles.container}>
-        <div
-          className={`${styles.dropdownFrom} ${styles.customTrigger} ${styles.customTriggerFrom}`}
-        >
+        <div className={`${styles.customTrigger} ${styles.customTriggerFrom}`}>
           <div>
             <p className={styles.customTriggerLabel}>From</p>
             <DropdownSelected className={styles.customTriggerText} />
