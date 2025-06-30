@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
 import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
 
-const ToDropdown = () => {
+const DropdownTo = () => {
   const context = useContext(ConverterContext);
   if (!context) {
     throw new Error("DropdownList must be used within the Dropdown");
@@ -47,4 +47,4 @@ const ToDropdown = () => {
   );
 };
 
-export default ToDropdown;
+export default DropdownTo;

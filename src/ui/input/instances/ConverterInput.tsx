@@ -4,14 +4,14 @@ import Input from "../Input.tsx";
 import styles from "./ConvertInput.module.scss";
 
 const ConverterInput = () => {
-  const [input, setInput] = useState<string>("");
-  const [error, setError] = useState("");
-
   const context = useContext(ConverterContext);
   if (!context)
     throw new Error("ConverterInput must be used inside the ConverterContext");
 
-  const { setInput: setContextInput } = context;
+  const { setInput: setContextInput, input: contextInput } = context;
+
+  const [input, setInput] = useState<string>(() => contextInput.toString());
+  const [error, setError] = useState("");
 
   const validate = (value: string) => {
     setInput(value);
@@ -38,7 +38,7 @@ const ConverterInput = () => {
   return (
     <div className={styles.container}>
       <Input input={input} setInput={validate} />
-      <p className={styles.error}>{error}</p>
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };

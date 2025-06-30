@@ -35,3 +35,15 @@
 .icon {
   @apply text-2xl text-gray-600;
 }
+
+@media screen and (max-width: 810px) {
+  .customTrigger {
+    &From {
+      @apply pr-5;
+    }
+
+    &To {
+      @apply pl-5;
+    }
+  }
+}

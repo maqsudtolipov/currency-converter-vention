@@ -1,66 +1,47 @@
-import styles from "./Display.module.scss";
-import { ConverterContext } from "../ConverterContext.tsx";
-import { useContext } from "react";
-import convertCurrency from "../../../helpers/convertCurrency.ts";
-import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
-import localizeCurrency from "../../../helpers/localizeCurrency.ts";
+import ResultsBoard from "./ResultsBoard.tsx";
+import formatDate from "../../../helpers/formatDate.ts";
+import useCurrencyRates from "../../../hooks/useCurrencyRates.ts";
 
 const Display = () => {
-  const context = useContext(ConverterContext);
-  if (!context) return null;
-
-  const { input, currencyRates, fromCurrency, toCurrency } = context;
-
-  if (!currencyRates) return <p>Currency rates not fetched</p>;
-
-  const selectedCurrency = dropdownCurrencies.find(
-    (item) => item.code === toCurrency,
-  );
+  const { dataExists, isLoading, error, fetchData, updatedAt } =
+    useCurrencyRates();
 
   return (
-    <div>
-      <p className={styles.fromCurrency}>
-        {input}{" "}
-        {dropdownCurrencies.find((item) => item.code === fromCurrency)?.name}s =
+    <>
+      {dataExists && <ResultsBoard />}
+
+      {/* Error handling when data does not exist */}
+      {!dataExists && isLoading && <p>Loading rates...</p>}
+
+      {!dataExists && !isLoading && error && (
+        <p style={{ color: "#991b1b" }}>⛔️ Error: {error}</p>
+      )}
+
+      {/* Error handling if data exists */}
+      <p style={{ fontSize: "14px", color: "#797979" }}>
+        <span
+          role="button"
+          onClick={fetchData}
+          style={{ color: "#1d4ed8", userSelect: "none" }}
+        >
+          Refetch
+        </span>
+
+        {dataExists && (
+          <>
+            {" – "}
+
+            {isLoading && <span>Loading rates...</span>}
+
+            {!isLoading && error && (
+              <span style={{ color: "#991b1b" }}> – ⛔️ Error: {error}</span>
+            )}
+
+            {!isLoading && <span>Last updated {formatDate(updatedAt)}</span>}
+          </>
+        )}
       </p>
-      <p className={styles.toCurrency}>
-        {selectedCurrency
-          ? `${localizeCurrency(
-              convertCurrency(
-                input,
-                currencyRates[fromCurrency],
-                currencyRates[toCurrency],
-              ),
-              selectedCurrency.locale,
-              selectedCurrency.code,
-            )} ${selectedCurrency.name}s`
-          : null}
-      </p>
-      <div className={styles.prices}>
-        <p>
-          {`1 ${fromCurrency} = ${
-            Math.floor(
-              convertCurrency(
-                1,
-                currencyRates[fromCurrency],
-                currencyRates[toCurrency],
-              ) * 1e10,
-            ) / 1e10
-          } ${toCurrency}`}
-        </p>
-        <p>
-          {`1 ${toCurrency} = ${
-            Math.floor(
-              convertCurrency(
-                1,
-                currencyRates[toCurrency],
-                currencyRates[fromCurrency],
-              ) * 1e10,
-            ) / 1e10
-          } ${fromCurrency}`}
-        </p>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -6,11 +6,25 @@
 
 .inputField {
   @apply relative;
-  @apply grid grid-cols-[1fr_1fr_1fr] gap-2;
+  @apply grid grid-cols-[1fr_2fr] gap-2;
+}
+
+.dropdownsContainer {
+  @apply w-full;
+  @apply relative;
+  @apply grid grid-cols-[1fr_1fr] gap-2;
 }
 
 @media screen and (max-width: 810px) {
+  .converter {
+    @apply p-6;
+  }
+
   .inputField {
     @apply grid-cols-1;
+  }
+
+  .dropdownsContainer {
+    @apply grid-cols-1
   }
 }
