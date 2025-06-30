@@ -1,13 +1,8 @@
-import { useContext } from "react";
-import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
 import SwitchBtn from "../SwitchBtn.tsx";
+import { useConverterContext } from "../../../feature/converter/hooks/useConverterContext.ts";
 
 const ConverterSwitchBtn = () => {
-  const context = useContext(ConverterContext);
-  if (!context)
-    throw new Error(
-      "ConverterSwitchBtn must be used inside the ConverterContext",
-    );
+  const context = useConverterContext();
 
   const { switchCurrency } = context;
 

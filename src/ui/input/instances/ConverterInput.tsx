@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
-import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
+import { useState } from "react";
 import Input from "../Input.tsx";
 import styles from "./ConvertInput.module.scss";
+import { useConverterContext } from "../../../feature/converter/hooks/useConverterContext.ts";
 
 const validateInput = (value: string) => {
   if (value.trim() === "") return "Value is required";
@@ -11,9 +11,7 @@ const validateInput = (value: string) => {
 };
 
 const ConverterInput = () => {
-  const context = useContext(ConverterContext);
-  if (!context)
-    throw new Error("ConverterInput must be used inside the ConverterContext");
+  const context = useConverterContext();
 
   const { setInput: setContextInput, input: contextInput } = context;
 

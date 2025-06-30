@@ -5,15 +5,11 @@ import DropdownTrigger from "../DropdownTrigger.tsx";
 import DropdownSelected from "../DropdownSelected.tsx";
 import styles from "./Dropdown.module.scss";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { useContext } from "react";
-import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
 import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
+import { useConverterContext } from "../../../feature/converter/hooks/useConverterContext.ts";
 
 const DropdownTo = () => {
-  const context = useContext(ConverterContext);
-  if (!context) {
-    throw new Error("DropdownList must be used within the Dropdown");
-  }
+  const context = useConverterContext();
 
   const { setToCurrency, toCurrency } = context;
   const something = dropdownCurrencies.find((item) => item.code === toCurrency);

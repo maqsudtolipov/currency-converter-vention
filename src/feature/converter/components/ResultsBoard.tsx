@@ -1,13 +1,11 @@
 import styles from "./Display.module.scss";
-import { ConverterContext } from "../ConverterContext.tsx";
-import { useContext } from "react";
 import convertCurrency from "../../../helpers/convertCurrency.ts";
 import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
 import localizeCurrency from "../../../helpers/localizeCurrency.ts";
+import { useConverterContext } from "../hooks/useConverterContext.ts";
 
 const ResultsBoard = () => {
-  const context = useContext(ConverterContext);
-  if (!context) return null;
+  const context = useConverterContext();
 
   const { input, currencyRates, fromCurrency, toCurrency } = context;
 
