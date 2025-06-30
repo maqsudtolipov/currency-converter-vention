@@ -7,9 +7,9 @@ interface SwitchBtnProps {
 
 const SwitchBtn = ({ onSwitch }: SwitchBtnProps) => {
   return (
-    <div className={styles.switch} onClick={onSwitch} role="button">
+    <button className={styles.switch} onClick={onSwitch}>
       <RiArrowLeftRightFill />
-    </div>
+    </button>
   );
 };
 
