@@ -8,6 +8,7 @@ const InputFields = () => {
   return (
     <div className={styles.inputField}>
       <ConverterInput />
+
       <div className={styles.dropdownsContainer}>
         <DropdownFrom />
         <ConverterSwitchBtn />

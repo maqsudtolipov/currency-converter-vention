@@ -3,6 +3,13 @@ import { ConverterContext } from "../../../feature/converter/ConverterContext.ts
 import Input from "../Input.tsx";
 import styles from "./ConvertInput.module.scss";
 
+const validateInput = (value: string) => {
+  if (value.trim() === "") return "Value is required";
+  if (!/^\d+(\.\d+)?$/.test(value)) return "Please enter a valid amount";
+  if (Number(value) < 0) return "Please enter a valid amount";
+  else return null;
+};
+
 const ConverterInput = () => {
   const context = useContext(ConverterContext);
   if (!context)
@@ -13,31 +20,20 @@ const ConverterInput = () => {
   const [input, setInput] = useState<string>(() => contextInput.toString());
   const [error, setError] = useState("");
 
-  const validate = (value: string) => {
+  const handleInputChange = (value: string) => {
     setInput(value);
 
-    if (value.trim() === "") {
-      setError("Value is required");
-      return;
-    }
-
-    if (!/^\d+(\.\d+)?$/.test(value)) {
-      setError("Please enter a valid amount");
-      return;
-    }
-
-    const number = Number(value);
-    if (isNaN(number) || number < 0) {
-      setError("Please enter a valid amount");
-    }
+    // Validate input
+    const validationError = validateInput(value);
+    if (validationError) return setError(validationError);
 
     setError("");
-    setContextInput(number);
+    setContextInput(Number(value));
   };
 
   return (
     <div className={styles.container}>
-      <Input input={input} setInput={validate} />
+      <Input input={input} setInput={handleInputChange} />
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );
