@@ -53,9 +53,11 @@ const Converter = () => {
     <div className={styles.converter}>
       <div className={styles.inputField}>
         <ConverterInput />
-        <FromDropdown />
-        <ConverterSwitchBtn />
-        <ToDropdown />
+        <div className={styles.dropdownsContainer}>
+          <FromDropdown />
+          <ConverterSwitchBtn />
+          <ToDropdown />
+        </div>
       </div>
 
       {dataExists && <ResultsBoard />}
