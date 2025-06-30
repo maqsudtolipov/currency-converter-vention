@@ -6,22 +6,18 @@ import DropdownSelected from "../DropdownSelected.tsx";
 import styles from "./Dropdown.module.scss";
 import { RiArrowDownSLine } from "react-icons/ri";
 import dropdownCurrencies from "../../../data/dropdownCurrencies.ts";
-import { useContext } from "react";
-import { ConverterContext } from "../../../feature/converter/ConverterContext.tsx";
+import { useConverterContext } from "../../../feature/converter/hooks/useConverterContext.ts";
 
 const DropdownFrom = () => {
-  const context = useContext(ConverterContext);
-  if (!context) {
-    throw new Error("DropdownList must be used within the Dropdown");
-  }
+  const context = useConverterContext();
 
   const { setFromCurrency, fromCurrency } = context;
-  const something = dropdownCurrencies.find(
+  const selectedCode = dropdownCurrencies.find(
     (item) => item.code === fromCurrency,
   );
 
   return (
-    <Dropdown externalItem={something}>
+    <Dropdown selectedItem={selectedCode}>
       <DropdownTrigger className={styles.container}>
         <div className={`${styles.customTrigger} ${styles.customTriggerFrom}`}>
           <div>

@@ -1,15 +1,16 @@
-.container {
+.converterInput {
   @apply relative;
 }
 
-.error {
+.errorMessage {
   @apply absolute top-full left-4;
   @apply inline-block;
   @apply text-sm text-red-800;
 }
 
 @media screen and (max-width: 810px) {
-  .error {
+  .errorMessage {
     @apply relative top-0 left-0;
+    @apply pl-2;
   }
 }
