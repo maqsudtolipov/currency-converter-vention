@@ -1,69 +1,63 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 💱 Currency Converter Widget
 
-Currently, two official plugins are available:
+A simple currency converter app inspired by [xe.com](https://www.xe.com/). You can input value, change between 2 different currencies and swap them.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🚀 Features
+- Input for currency
+- 2 dropdowns for choosing currencies
+- Swap button for swapping between selected currencies
+- Display for results, shows localized: result, rates for 1 value rate of each currency
+- Refresh button for updating currency rates
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 📦 Installation
+Install
+```
+npm install
+```
+Run development server
+```
+npm run dev
+```
+### 💵 Rate calculation
+App calculates rates using USD as base using current formula.
+```
+result = amount * (toRate / fromRate)
+```
+Example:
+```
+100 UZS to USD = 100 * (1 / 12500) = 0.008 USD
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Rates fetched from [exchangerate-api.com](www.exchangerate-api.com).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 🎨 Custom components
+Dropdown
+```
+<Dropdown selectedItem={selectedItem}>
+  <DropdownTrigger>
+    <DropdownSelected />
+  </DropdownTrigger>
+  
+  <DropdownList>
+    {dropdownCurrencies.map((item) => (
+      <DropdownItem
+        key={item.code}
+        keyId={item.code}
+        flag={item.flag}
+        currency={item.name}
+        onSelect={onSelect}
+      />
+    ))}
+  </DropdownList>
+</Dropdown>
+```
+Input
+```
+ <Input input={input} setInput={handleInputChange} />
+```
+SwitchBtn
+```
+<SwitchBtn onSwitch={switchCurrency} />;
 ```
